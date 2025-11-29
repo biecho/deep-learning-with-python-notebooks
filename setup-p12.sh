@@ -39,9 +39,33 @@ python3.11 -m venv "$VENV_DIR"
 source "$VENV_DIR/bin/activate"
 
 echo ""
-echo "[2/4] Installing dependencies from requirements-p12.txt..."
+echo "[2/4] Installing dependencies..."
 pip install --upgrade pip
-pip install -r "$SCRIPT_DIR/requirements-p12.txt"
+
+# Install TensorFlow 2.12 first (it bundles keras 2.12)
+echo "  - Installing TensorFlow 2.12..."
+pip install tensorflow==2.12.1
+
+# Install CUDA 11 libraries
+echo "  - Installing CUDA 11 libraries..."
+pip install nvidia-cudnn-cu11==8.6.0.163 nvidia-cublas-cu11 nvidia-cuda-runtime-cu11 \
+    nvidia-cuda-nvrtc-cu11 nvidia-cufft-cu11 nvidia-curand-cu11 \
+    nvidia-cusolver-cu11 nvidia-cusparse-cu11 nvidia-cuda-nvcc-cu11
+
+# Install Keras 3.12 (overrides keras 2.12, ignore dependency conflicts)
+echo "  - Installing Keras 3.12..."
+pip install keras==3.12.0 --no-deps
+
+# Install Keras dependencies manually (avoiding TF version conflicts)
+pip install namex rich optree ml-dtypes
+
+# Pin numpy for TF 2.12 compatibility
+echo "  - Pinning numpy to 1.24.3..."
+pip install numpy==1.24.3
+
+# Install other dependencies
+echo "  - Installing remaining packages..."
+pip install regex matplotlib ipykernel
 
 echo ""
 echo "[3/4] Registering Jupyter kernel..."
