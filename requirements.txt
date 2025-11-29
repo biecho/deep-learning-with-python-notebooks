@@ -1,11 +1,23 @@
 # Deep Learning with Python (3rd Edition) - Chapter 14: Text Classification
-# Tested on Apple M1 Pro with Python 3.x
+#
+# Tested environments:
+#   - Apple M1 Pro (CPU only, TensorFlow backend)
+#   - Linux with NVIDIA GPUs (p12 server: 8x RTX 2080 Ti)
+#
+# IMPORTANT: For GPU support on Linux, use:
+#   pip install 'tensorflow[and-cuda]'
+# This bundles CUDA libraries via pip (no system CUDA installation needed).
+#
+# For CPU-only (macOS/Windows), plain tensorflow is sufficient:
+#   pip install tensorflow
 
 # Core ML framework
 keras>=3.0
 keras-hub
 
-# Backend - TensorFlow (also needed for tf.data pipelines)
+# Backend - TensorFlow
+# For GPU: pip install 'tensorflow[and-cuda]'
+# For CPU: pip install tensorflow
 tensorflow
 
 # Backend - JAX (optional, has compatibility issues with Keras 3.10)
@@ -22,3 +34,4 @@ matplotlib
 # Jupyter support
 jupyter
 ipykernel
+jupyterlab-vim  # Vim keybindings for JupyterLab
