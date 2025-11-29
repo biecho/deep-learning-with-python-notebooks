@@ -10,7 +10,7 @@
 #   bash setup-p12.sh
 #
 # After running this script:
-#   1. Start Jupyter: source .venv-tf215/bin/activate && jupyter lab --no-browser
+#   1. Start Jupyter: source .venv/bin/activate && jupyter lab --no-browser
 #   2. From local machine: ssh -L 8888:localhost:8888 p12
 #   3. Open notebook and select kernel "DLWP TF2.12 GPU"
 # =============================================================================
@@ -18,7 +18,7 @@
 set -e  # Exit on error
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_DIR="$SCRIPT_DIR/.venv-tf215"
+VENV_DIR="$SCRIPT_DIR/.venv"
 KERNEL_NAME="dlwp-tf212"
 KERNEL_DIR="$HOME/.local/share/jupyter/kernels/$KERNEL_NAME"
 
