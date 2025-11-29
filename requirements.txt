@@ -8,6 +8,11 @@ keras-hub
 # Backend - TensorFlow (also needed for tf.data pipelines)
 tensorflow
 
+# Backend - JAX (optional, has compatibility issues with Keras 3.10)
+# Uncomment if you want to try JAX backend
+# jax
+# jaxlib
+
 # Text processing
 regex
 
