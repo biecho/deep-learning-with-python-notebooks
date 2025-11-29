@@ -1,0 +1,19 @@
+# Deep Learning with Python (3rd Edition) - Chapter 14: Text Classification
+# Tested on Apple M1 Pro with Python 3.x
+
+# Core ML framework
+keras>=3.0
+keras-hub
+
+# Backend - TensorFlow (also needed for tf.data pipelines)
+tensorflow
+
+# Text processing
+regex
+
+# Visualization
+matplotlib
+
+# Jupyter support
+jupyter
+ipykernel

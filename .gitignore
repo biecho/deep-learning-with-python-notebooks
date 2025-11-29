@@ -1,0 +1,15 @@
+# Virtual environment
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IMDb dataset copies (created when running notebook)
+imdb_train/
+imdb_test/
+imdb_val/
