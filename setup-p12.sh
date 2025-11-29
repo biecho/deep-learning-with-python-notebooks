@@ -59,13 +59,13 @@ pip install keras==3.12.0 --no-deps
 # Install Keras dependencies manually (avoiding TF version conflicts)
 pip install namex rich optree ml-dtypes
 
-# Pin numpy for TF 2.12 compatibility
-echo "  - Pinning numpy to 1.24.3..."
-pip install numpy==1.24.3
-
 # Install other dependencies
 echo "  - Installing remaining packages..."
 pip install regex matplotlib ipykernel
+
+# Pin numpy LAST (after all other installs, as some upgrade it)
+echo "  - Pinning numpy to 1.24.3 (required for TF 2.12)..."
+pip install numpy==1.24.3
 
 echo ""
 echo "[3/4] Registering Jupyter kernel..."
