@@ -1,0 +1,48 @@
+# Deep Learning with Python (3rd Edition) - Chapter 14: Text Classification
+# Requirements for p12 server (8x RTX 2080 Ti, NVIDIA driver 520.56.06)
+#
+# IMPORTANT: Driver 520 only supports CUDA 11.x, NOT CUDA 12.
+# TensorFlow 2.12 is the last version built with CUDA 11.8.
+#
+# Setup:
+#   python3.11 -m venv .venv-tf215
+#   source .venv-tf215/bin/activate
+#   pip install -r requirements-p12.txt
+#
+# Then register the Jupyter kernel with GPU environment variables:
+#   python -m ipykernel install --user --name=dlwp-tf212 --display-name="DLWP TF2.12 GPU"
+#   # Edit ~/.local/share/jupyter/kernels/dlwp-tf212/kernel.json to add "env" section
+#   # (see notebook cell-1 for details)
+
+# TensorFlow 2.12 (last version with CUDA 11.8 support)
+tensorflow==2.12.1
+
+# Keras 3 (works with TF 2.12 despite version warnings)
+keras==3.12.0
+
+# NumPy must be <2 for TensorFlow 2.12 compatibility
+numpy==1.24.3
+
+# CUDA 11 libraries (bundled, no system CUDA needed)
+nvidia-cudnn-cu11==8.6.0.163
+nvidia-cublas-cu11
+nvidia-cuda-runtime-cu11
+nvidia-cuda-nvrtc-cu11
+nvidia-cufft-cu11
+nvidia-curand-cu11
+nvidia-cusolver-cu11
+nvidia-cusparse-cu11
+nvidia-cuda-nvcc-cu11
+
+# Text processing
+regex
+
+# Visualization
+matplotlib
+
+# Jupyter support
+ipykernel
+
+# NOTE: keras-hub is NOT included because it requires tensorflow-text,
+# which pulls in TensorFlow 2.19+ (incompatible with driver 520).
+# The notebook cells that use keras-hub will be skipped on p12.
