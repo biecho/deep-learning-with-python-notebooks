@@ -2,11 +2,17 @@
 #
 # Tested environments:
 #   - Apple M1 Pro (CPU only, TensorFlow backend)
-#   - Linux with NVIDIA GPUs (p12 server: 8x RTX 2080 Ti)
+#   - Linux with NVIDIA GPUs (p12 server: 8x RTX 2080 Ti, driver 520, PyTorch backend)
 #
-# IMPORTANT: For GPU support on Linux, use:
-#   pip install 'tensorflow[and-cuda]'
-# This bundles CUDA libraries via pip (no system CUDA installation needed).
+# GPU Setup (Linux):
+#   Check your driver version: cat /proc/driver/nvidia/version
+#
+#   Driver 525+: Use TensorFlow with CUDA 12
+#     pip install 'tensorflow[and-cuda]'
+#
+#   Driver 520 or older: Use PyTorch with CUDA 11.8
+#     pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+#     Then set KERAS_BACKEND="torch" in the notebook
 #
 # For CPU-only (macOS/Windows), plain tensorflow is sufficient:
 #   pip install tensorflow
@@ -15,10 +21,14 @@
 keras>=3.0
 keras-hub
 
-# Backend - TensorFlow
-# For GPU: pip install 'tensorflow[and-cuda]'
+# Backend - TensorFlow (default)
+# For GPU with driver 525+: pip install 'tensorflow[and-cuda]'
 # For CPU: pip install tensorflow
 tensorflow
+
+# Backend - PyTorch (required for older NVIDIA drivers)
+# For GPU with driver <525: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+# Then set KERAS_BACKEND="torch" in the notebook
 
 # Backend - JAX (optional, has compatibility issues with Keras 3.10)
 # Uncomment if you want to try JAX backend
